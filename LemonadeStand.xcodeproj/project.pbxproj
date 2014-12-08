@@ -161,6 +161,7 @@
 				TargetAttributes = {
 					2223ADCC1A2EFD9A00284185 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 87MDUSMR9U;
 					};
 					2223ADE11A2EFD9A00284185 = {
 						CreatedOnToolsVersion = 6.1;
@@ -338,6 +339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LemonadeStand/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LemonadeStand/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
