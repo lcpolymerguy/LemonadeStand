@@ -64,18 +64,12 @@ class ViewController: UIViewController {
 
     @IBAction func purchaseLemonSubtractButtonPressed(sender: UIButton) {
     
-        if purchasedLemons == 0 {
+        if lemons == 0 {
             
             println("You have not purchased any lemons.")
         
         }
-        
-        else if lemons == mixedLemons {
-            
-            println("You cannot remove any lemons.")
-            
-        }
-        
+
         else {
         
             cash += 2
@@ -114,18 +108,12 @@ class ViewController: UIViewController {
     
     @IBAction func purchaseIceCubesSubtractButtonPressed(sender: UIButton) {
         
-        if purchasedIceCubes == 0 {
+        if iceCubes == 0 {
             
             println("You have not purchased any ice cubes.")
             
         }
-            
-        else if iceCubes == mixedIceCubes {
-            
-            println("You cannot remove any ice cubes.")
-            
-        }
-        
+
         else {
             
             cash += 1
@@ -142,7 +130,7 @@ class ViewController: UIViewController {
     
     @IBAction func mixLemonsAddButtonPressed(sender: UIButton) {
         
-        if mixedLemons == lemons {
+        if lemons == 0 {
             
             println("You don't have any more lemons to mix.")
         
@@ -151,8 +139,10 @@ class ViewController: UIViewController {
         else {
             
             mixedLemons += 1
+            lemons -= 1
             
             mixedLemonsLabel.text = "\(mixedLemons)"
+            totalLemonsLabel.text = "\(lemons) Lemons"
             
         }
     
@@ -169,8 +159,10 @@ class ViewController: UIViewController {
         else {
             
             mixedLemons -= 1
+            lemons += 1
             
             mixedLemonsLabel.text = "\(mixedLemons)"
+            totalLemonsLabel.text = "\(lemons) Lemons"
             
         }
         
@@ -178,7 +170,7 @@ class ViewController: UIViewController {
     
     @IBAction func mixIceCubesAddButtonPressed(sender: UIButton) {
     
-        if mixedIceCubes == iceCubes {
+        if iceCubes == 0 {
             
             println("You don't have any more ice cubes to mix.")
             
@@ -187,8 +179,10 @@ class ViewController: UIViewController {
         else {
             
             mixedIceCubes += 1
+            iceCubes -= 1
             
             mixedIceCubesLabel.text = "\(mixedIceCubes)"
+            totalIceCubesLabel.text = "\(iceCubes) Ice Cubes"
             
         }
     
@@ -205,8 +199,10 @@ class ViewController: UIViewController {
         else {
             
             mixedIceCubes -= 1
+            iceCubes += 1
             
             mixedIceCubesLabel.text = "\(mixedIceCubes)"
+            totalIceCubesLabel.text = "\(iceCubes) Ice Cubes"
         
         }
     
