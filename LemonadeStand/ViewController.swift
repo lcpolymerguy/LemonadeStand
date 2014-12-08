@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     
         if lemons == 0 {
             
-            println("You have not purchased any lemons.")
+            println("You have no lemons in your inventory.")
         
         }
 
@@ -110,7 +110,7 @@ class ViewController: UIViewController {
         
         if iceCubes == 0 {
             
-            println("You have not purchased any ice cubes.")
+            println("You have no ice cubes left in inventory.")
             
         }
 
