@@ -20,6 +20,11 @@ class ViewController: UIViewController {
     var mixedLemons = 0
     var mixedIceCubes = 0
     
+    var acidicRatio: Double = 0.0
+    var numberOfCustomers = 0
+    
+    var individualPreferences: [Double] = []
+    
     @IBOutlet weak var totalCashLabel: UILabel!
     @IBOutlet weak var totalLemonsLabel: UILabel!
     @IBOutlet weak var totalIceCubesLabel: UILabel!
@@ -209,6 +214,53 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startDayButtonPressed(sender: UIButton) {
+    
+        if mixedLemons == 0 || mixedIceCubes == 0 {
+            
+            println("You need lemons and ice cubes mixed in order to start your day.")
+            
+        }
+        
+        else {
+        
+            acidicRatio = Double(lemons) / Double(iceCubes)
+        
+            generateDailyCustomers()
+
+            // Debug statement
+            println(numberOfCustomers)
+            
+            generateCustomerPreferences()
+    
+            // Debug statement
+            println(individualPreferences)
+            
+        }
+    }
+    
+    func generateDailyCustomers() {
+        
+        numberOfCustomers = Int(arc4random_uniform(UInt32(10)))
+        
+    }
+    
+    func generateCustomerPreferences() {
+        
+        individualPreferences = []
+        
+        var randomPreferenceInt = 0
+        var randomPreferenceFactorDouble: Double = 0.0
+        
+        for var i = 0; i < numberOfCustomers; i++ {
+            
+            randomPreferenceInt = Int(arc4random_uniform(UInt32(10)))
+            
+            randomPreferenceFactorDouble = Double(randomPreferenceInt) / 10.0
+            
+            individualPreferences.append(randomPreferenceFactorDouble)
+            
+        }
+        
     }
     
 }
