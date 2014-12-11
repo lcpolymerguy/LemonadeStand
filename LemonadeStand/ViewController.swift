@@ -25,6 +25,10 @@ class ViewController: UIViewController {
     
     var individualPreferences: [Double] = []
     
+    var lemonadeAcidity = ""
+    
+    var individualPreferencesAcidity: [String] = []
+    
     @IBOutlet weak var totalCashLabel: UILabel!
     @IBOutlet weak var totalLemonsLabel: UILabel!
     @IBOutlet weak var totalIceCubesLabel: UILabel!
@@ -222,9 +226,12 @@ class ViewController: UIViewController {
         }
         
         else {
+            
+            acidicRatio = Double(mixedLemons) / Double(mixedIceCubes)
         
-            acidicRatio = Double(lemons) / Double(iceCubes)
-        
+            //Debug statement
+            println(acidicRatio)
+            
             generateDailyCustomers()
 
             // Debug statement
@@ -235,12 +242,26 @@ class ViewController: UIViewController {
             // Debug statement
             println(individualPreferences)
             
+            generateLemonadeAcidity()
+            
+            //Debug statement
+            println(lemonadeAcidity)
+            
+            generateCustomerPreferencesTaste()
+            
+            // Debug statement
+            println(individualPreferencesAcidity)
+            
+            compareCustomerPreferences()
+            
+            resetDay()
+            
         }
     }
     
     func generateDailyCustomers() {
         
-        numberOfCustomers = Int(arc4random_uniform(UInt32(10)))
+        numberOfCustomers = Int(arc4random_uniform(UInt32(10))) + 1
         
     }
     
@@ -260,6 +281,98 @@ class ViewController: UIViewController {
             individualPreferences.append(randomPreferenceFactorDouble)
             
         }
+        
+    }
+    
+    func generateLemonadeAcidity() {
+        
+        if acidicRatio > 1 {
+            
+            lemonadeAcidity = "Acidic"
+            
+        }
+        
+        else if acidicRatio == 1 {
+            
+            lemonadeAcidity = "Equal"
+            
+        }
+        
+        else {
+            
+            lemonadeAcidity = "Dilute"
+            
+        }
+        
+    }
+
+    func generateCustomerPreferencesTaste() {
+        
+        individualPreferencesAcidity = []
+        
+        for var i = 0; i < individualPreferences.count; i++ {
+            
+            if individualPreferences[i] >= 0 && individualPreferences[i] < 0.4 {
+                
+                individualPreferencesAcidity.append("Acidic")
+                
+            }
+            
+            else if individualPreferences[i] >= 0.4 && individualPreferences[i] <= 0.6 {
+                
+                individualPreferencesAcidity.append("Equal")
+                
+            }
+            
+            else {
+                
+                individualPreferencesAcidity.append("Dilute")
+                
+            }
+            
+        }
+        
+    }
+    
+    func compareCustomerPreferences() {
+        
+        for var i = 0; i < individualPreferences.count; i++ {
+            
+            if individualPreferencesAcidity[i] == lemonadeAcidity {
+                
+                println("Paid!")
+                
+                cash += 1
+                
+            }
+            
+            else {
+                
+                println("No match, No revenue")
+                
+            }
+            
+        }
+        
+        println(cash)
+        
+        totalCashLabel.text = "$\(cash)"
+        
+    }
+
+    func resetDay() {
+        
+        purchasedLemons = 0
+        purchasedIceCubes = 0
+        
+        purchasedLemonsLabel.text = "\(purchasedLemons)"
+        purchasedIceCubesLabel.text = "\(purchasedIceCubes)"
+        
+        mixedLemons = 0
+        mixedIceCubes = 0
+        
+        mixedLemonsLabel.text = "\(mixedLemons)"
+        mixedIceCubesLabel.text = "\(mixedIceCubes)"
         
     }
     
